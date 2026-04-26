@@ -15,11 +15,14 @@ def genrate_password(character_used, length):
 
 
 def view_password():
-    pass
+    with open ('password.txt','r') as file :
+        load_data = file.readlines()
+        return load_data
 
 
 def save_password(password):
-    pass
+    with open ('password.txt','a') as file :
+        file.write(password + "\n")
 
 
 # Main function
