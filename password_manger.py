@@ -1,6 +1,6 @@
 import random
 import string
-
+import math
 
 # About Password
 lowercase = string.ascii_lowercase
@@ -12,7 +12,17 @@ punctuations = string.punctuation
 def genrate_password(character_used, length):
     password = "".join(random.choices(character_used, k=length))
     print("\n Password Genrated Successfully : ", password)
-    return password
+    
+    
+    def calculate_entropy(character_set, length):
+        """Calculate password entropy in bits"""
+        if len(character_set) == 0:
+            return 0
+        entropy = length * math.log2(len(character_used))
+        return entropy
+    calculated_entropy = calculate_entropy(character_used, length)
+    print(f"Password Entropy: {calculated_entropy:.2f} bits")
+    return password 
 
 
 def view_password():
@@ -25,7 +35,6 @@ def view_password():
 
 def save_password(password):
     with open("password.txt", "a") as file:
-        
         file.write(password + "\n")
 
 
@@ -51,13 +60,14 @@ def Enter_password():
             print(" ---Invalid word--- ")
             break
     password = genrate_password(character_used, length)
-    save_password(password)
+    save_password(password)     
+
 
 
 # Main function
 def main():
 
-    while True: 
+    while True:
         print("\n Genrate Password [1]")
         print(" View Password[2]")
         print(" Exit[3]")
@@ -73,6 +83,8 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
+        
+       
 
 if __name__ == "__main__":
     main()
