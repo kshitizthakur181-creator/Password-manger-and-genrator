@@ -11,18 +11,21 @@ punctuations = string.punctuation
 
 def genrate_password(character_used, length):
     password = "".join(random.choices(character_used, k=length))
-    print("Password Genrated Successfully : ", password)
+    print("\n Password Genrated Successfully : ", password)
     return password
 
 
 def view_password():
     with open("password.txt", "r") as file:
         load_data = file.readlines()
+        print("\n Password Loaded Successfully")
+        print("Passwords : ")
         return load_data
 
 
 def save_password(password):
     with open("password.txt", "a") as file:
+        
         file.write(password + "\n")
 
 
@@ -54,8 +57,8 @@ def Enter_password():
 # Main function
 def main():
 
-    while True:
-        print(" Genrate Password [1]")
+    while True: 
+        print("\n Genrate Password [1]")
         print(" View Password[2]")
         print(" Exit[3]")
         choice = int(input("Enter your choice : "))
