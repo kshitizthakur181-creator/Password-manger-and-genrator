@@ -11,19 +11,20 @@ punctuations = string.punctuation
 
 def genrate_password(character_used, length):
     password = "".join(random.choices(character_used, k=length))
-    print(password)
+    print("Password Genrated Successfully : ", password)
     return password
 
 
 def view_password():
-    with open ('password.txt','r') as file :
+    with open("password.txt", "r") as file:
         load_data = file.readlines()
         return load_data
 
 
 def save_password(password):
-    with open ('password.txt','a') as file :
+    with open("password.txt", "a") as file:
         file.write(password + "\n")
+
 
 def Enter_password():
     length = int(input("Enter the Length for the password (8 - 16) : "))
@@ -31,9 +32,9 @@ def Enter_password():
         "Enter the words to be use [Lower case (low), Upper Case (up) , Digits (digits) , punctutaions (punc)] : "
     )
     type_used = type_used.split()
-    
+
     character_used = ""
-    
+
     for typies in type_used:
         if typies == "low":
             character_used += lowercase
@@ -48,6 +49,7 @@ def Enter_password():
             break
     password = genrate_password(character_used, length)
     save_password(password)
+
 
 # Main function
 def main():
