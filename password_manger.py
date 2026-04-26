@@ -24,10 +24,7 @@ def save_password(password):
     with open ('password.txt','a') as file :
         file.write(password + "\n")
 
-
-# Main function
-def main():
-
+def Enter_password():
     length = int(input("Enter the Length for the password (8 - 16) : "))
     type_used = input(
         "Enter the words to be use [Lower case (low), Upper Case (up) , Digits (digits) , punctutaions (punc)] : "
@@ -48,7 +45,27 @@ def main():
         else:
             print(" ---Invalid word--- ")
             break
-    genrate_password(character_used, length)
+    password = genrate_password(character_used, length)
+    save_password(password)
+
+# Main function
+def main():
+
+    while True:
+        print(" Genrate Password [1]")
+        print(" View Password[2]")
+        print(" Exit[3]")
+        choice = int(input("Enter your choice : "))
+        if choice == 1:
+            Enter_password()
+        elif choice == 2:
+            passwords = view_password()
+            for password in passwords:
+                print(password.strip())
+        elif choice == 3:
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
 
 if __name__ == "__main__":
