@@ -12,6 +12,7 @@ punctuations = string.punctuation
 def genrate_password(character_used, length):
     password = "".join(random.choices(character_used, k=length))
     print(password)
+    return password
 
 
 def view_password():
